@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Orzk&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-09-30T01:39:55.072Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo-Github搭建静态博客</title>
+    <link href="http://yoursite.com/2019/09/30/Hexo-Github%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2019/09/30/Hexo-Github搭建静态博客/</id>
+    <published>2019-09-30T01:07:40.000Z</published>
+    <updated>2019-09-30T01:39:55.072Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><p>下载安装node.js和git(根据自己情况选择)，比如Win10，选择Window64位版本。</p><h3 id="1-1-node-js安装"><a href="#1-1-node-js安装" class="headerlink" title="1.1 node.js安装"></a>1.1 node.js安装</h3><p>官网下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a>，选择LTS版本。下载完成后一直默认下一步安装。</p><blockquote><p>设置系统变量</p></blockquote><p>因为我们选择的默认安装，所以node.js被安装在C:\Program Files\nodejs。如下图编辑即可，注意要有分号间隔。</p><p><img src="https://i.imgur.com/YhonLPz.png" alt></p><p>可以输入以下命令查看版本号</p><pre><code>1、node -v2、npm -v</code></pre><p>效果如图<br><img src="https://i.imgur.com/GZDRoEX.png" alt></p><h3 id="1-2-git安装"><a href="#1-2-git安装" class="headerlink" title="1.2 git安装"></a>1.2 git安装</h3><p>官网下载地址：<a href="https://git-scm.com/downloads/" target="_blank" rel="noopener">https://git-scm.com/downloads/</a>，根据自己的系统选择相应的版本。</p><p>输入以下命令查看版本号</p><p><code>git --version</code></p><p>效果如图<br><img src="https://i.imgur.com/L102RM0.png" alt></p><p>git的环境变量默认配好了，如果没有自己的手动加入，和node.js配置步骤一样。</p><h2 id="2、安装Hexo"><a href="#2、安装Hexo" class="headerlink" title="2、安装Hexo"></a>2、安装Hexo</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><p>git安装成功后右击选择git bash here。</p><blockquote><p>执行命令安装hexo</p></blockquote><pre><code>npm install hexo-cli -gnpm install hexo --save</code></pre><p>在某个盘新建blog文件夹，这个文件夹就是博客的新目录。这里我把文件重命名为和GitHub仓库一样的名字，例如 yourname.github.io。进到文件右击选择git bash here，执行以下命令</p><p><code>hexo init</code></p><p>会生成一些文件</p><blockquote><p>安装依赖包</p></blockquote><p><code>npm install</code></p><blockquote><p>生成静态资源本地测试</p></blockquote><p>1、生成命令</p><p><code>hexo g</code></p><p>2、启动服务</p><p><code>hexo s</code></p><p>3、本地浏览</p><p>在浏览器输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到最初始的界面了。</p><blockquote><p>hexo 常用命令</p></blockquote><pre><code>hexo n &quot;文章标题&quot; == hexo new &quot;文章标题&quot; #新建文章hexo p == hexo publishhexo g == hexo generate#生成hexo s == hexo server #启动服务预览hexo d == hexo deploy#部署hexo clean #清除缓存</code></pre><h3 id="2-2-简单配置"><a href="#2-2-简单配置" class="headerlink" title="2.2 简单配置"></a>2.2 简单配置</h3><p>项目目录下有个配置名为_config.yml配置文件，用notepad打开就可以对站点的信息进行配置和设置。</p><p><strong><em>注意的是theme目录下也有一个同名的配置目录不要弄混</em></strong></p><blockquote><p>site设置</p></blockquote><pre><code>title: Orzk&apos;s Blog 网站名字subtitle:description: Orzk 网站描述author: Orzklanguage: zh-Hans 语言设置timezone:   </code></pre><blockquote><p>推送设置 </p></blockquote><pre><code>deploy:      type: git      repository: git@github.com:yourname/yourname.github.io.git      branch: master     </code></pre><h2 id="3、项目部署到github"><a href="#3、项目部署到github" class="headerlink" title="3、项目部署到github"></a>3、项目部署到github</h2><h3 id="3-1-git-的配置"><a href="#3-1-git-的配置" class="headerlink" title="3.1 git 的配置"></a>3.1 git 的配置</h3><blockquote><p>配置个人信息</p></blockquote><pre><code>git config --global user.name &quot;Orzk&quot;git config --global user.email &quot;mazikai3247@gmail.com&quot;</code></pre><blockquote><p>生成密钥和公玥</p></blockquote><p>1.桌面右击选择git bash here，创建SSH Key，按提示输入密码，可以不填密码一路回车。</p><p><code>$ ssh-keygen -t rsa -C &quot;mazikai3247@gmail.com&quot;</code></p><p>然后用户主目录/.ssh/下有两个文件，id_rsa是私钥，id_rsa.pub是公钥。</p><p>2.获取key，用notepad打开.ssh下的id_rsa.pub文件，里面的内容就是key的内容。</p><h3 id="3-2-gitHub配置"><a href="#3-2-gitHub配置" class="headerlink" title="3.2 gitHub配置"></a>3.2 gitHub配置</h3><blockquote><p>创建仓库</p></blockquote><p>首先没有账号的同学可以<a href="https://github.com" target="_blank" rel="noopener">注册</a>一下，然后创建仓库，仓库名的默认格式</p><pre><code>yourname.github.io</code></pre><p><img src="https://i.imgur.com/rriQ8Su.png" alt></p><blockquote><p>添加公钥</p></blockquote><p>登录GitHub，打开”SSH Keys”页面，<a href="https://github.com/settings/keys" target="_blank" rel="noopener">传送门</a><br><img src="https://i.imgur.com/dm9uc8t.png" alt></p><p>Title 里面随便写，Key 里面复制id_rsa.pub文件里的全部内容。</p><blockquote><p>测试连接是否成功</p></blockquote><p>使用命令</p><p><code>ssh -T git@github.com</code></p><p>如果出现</p><pre><code>The authenticity of host &apos;github.com (192.30.253.112)&apos; can&apos;t be established.RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.Are you sure you want to continue connecting (yes/no)? yPlease type &apos;yes&apos; or &apos;no&apos;: yes</code></pre><p>或者提示覆盖原来的文件，选择yes回车，只要能看到如下提示就能成功连接到github</p><p><strong><em>注意要选择 yes 在按回车，直接按回车会报错。</em></strong></p><pre><code>Hi orzk! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><blockquote><p>安装hexo-deployer-git插件</p></blockquote><p><code>npm install hexo-deployer-git --save</code></p><p>回到blog的主目录，右击选择git hash here，执行命令</p><pre><code>hexo clean # 清除资源hexo g     # 生成静态资源hexo d     # 部署</code></pre><p>这样输入链接 <a href="https://orzk.github.io/" target="_blank" rel="noopener">https://orzk.github.io</a>，就可以访问自己的博客。</p><h2 id="4、后记"><a href="#4、后记" class="headerlink" title="4、后记"></a>4、后记</h2><p>&emsp;&emsp;博客大体上算是完成了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1、环境准备&quot;&gt;&lt;a href=&quot;#1、环境准备&quot; class=&quot;headerlink&quot; title=&quot;1、环境准备&quot;&gt;&lt;/a&gt;1、环境准备&lt;/h2&gt;&lt;p&gt;下载安装node.js和git(根据自己情况选择)，比如Win10，选择Window64位版本。&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
